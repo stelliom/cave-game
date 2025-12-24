@@ -18,9 +18,23 @@ var _pixels_towards_next_tile = 0.0
 
 var _previous_position
 
+var _place_bomb = false
+
 
 func _physics_process(delta):
+    if Input.is_action_just_pressed("ui_accept"):
+        _place_bomb = true
+        
     if _is_idle:
+        if _place_bomb:
+            var bomb_scene = preload("res://objects/bomb/bomb.tscn")
+            var bomb = bomb_scene.instantiate()
+            bomb.position = _actor.position
+            var parent = _actor.get_parent()
+            var walls = parent.get_node("WallsLayer")
+            bomb.exploded.connect(walls.on_bomb_exploded)
+            parent.add_child(bomb)
+            _place_bomb = false
         # TODO: Should this be pulled out to an input component, so that we can
         #       use this component also for enemies that don't use keyboard inputs?
         _update_direction()
@@ -29,11 +43,8 @@ func _physics_process(delta):
             _previous_position = _actor.position
 
             _is_idle = false
-            if is_instance_valid(_collision_detector_component):
-                if _collision_detector_component.would_collide(_current_direction):   
-                    _is_idle = true
-                    if Input.is_action_pressed("ui_accept"):
-                        _collision_detector_component.destroy_terrain()
+            if is_instance_valid(_collision_detector_component):   
+                _is_idle = _collision_detector_component.would_collide(_current_direction)
 
     if !_is_idle:
         _move(delta)
