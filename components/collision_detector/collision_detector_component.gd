@@ -9,3 +9,11 @@ func would_collide(direction):
     force_raycast_update()
 
     return is_colliding()
+
+func destroy_terrain():
+    var collider = get_collider()
+    if collider is TileMapLayer:
+        #var collision_point = get_collision_point()
+        var local_pos = collider.to_local(global_position + target_position)
+        var cell = collider.local_to_map(local_pos)
+        collider.erase_cell(cell)

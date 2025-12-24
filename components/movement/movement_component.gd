@@ -30,7 +30,10 @@ func _physics_process(delta):
 
             _is_idle = false
             if is_instance_valid(_collision_detector_component):
-                _is_idle = _collision_detector_component.would_collide(_current_direction)
+                if _collision_detector_component.would_collide(_current_direction):   
+                    _is_idle = true
+                    if Input.is_action_pressed("ui_accept"):
+                        _collision_detector_component.destroy_terrain()
 
     if !_is_idle:
         _move(delta)
