@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhr2r50btqg80"]
+[gd_scene load_steps=23 format=3 uid="uid://bhr2r50btqg80"]
 
 [ext_resource type="Texture2D" uid="uid://l6jndg3oub0x" path="res://actors/player/player_walk_animation.png" id="1_71gsp"]
 [ext_resource type="Script" uid="uid://de4w4f46k88q" path="res://components/movement/movement_component.gd" id="2_ilk7j"]
 [ext_resource type="Script" uid="uid://sygbjh6mgu0f" path="res://components/collision_detector/collision_detector_component.gd" id="3_ax26v"]
+[ext_resource type="Script" uid="uid://bwqf3uxkm6ycu" path="res://components/bomb_spawner/bomb_spawner_component.gd" id="4_lsqbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku522"]
 size = Vector2(16, 16)
@@ -200,3 +201,7 @@ metadata/_custom_type_script = "uid://de4w4f46k88q"
 [node name="CollisionDetectorComponent" type="RayCast2D" parent="."]
 script = ExtResource("3_ax26v")
 metadata/_custom_type_script = "uid://sygbjh6mgu0f"
+
+[node name="BombSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("4_lsqbn")
+_actor = NodePath("..")
