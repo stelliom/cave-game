@@ -13,10 +13,13 @@ var _half_tile_size_vector = Vector2(_half_tile_size, _half_tile_size)
 
 func _input(event):
     if event.is_action_pressed("ui_accept"):
-        var bomb = bomb_scene.instantiate()
-        bomb.position = (_actor.position - _half_tile_size_vector).snappedf(_TILE_SIZE) + _half_tile_size_vector
+        _spawn_bomb()
 
-        var parent = _actor.get_parent()
-        #var walls = parent.get_node("WallsLayer")
-        #bomb.exploded.connect(walls.on_bomb_exploded)
-        parent.add_child(bomb)
+func _spawn_bomb():
+    var bomb = bomb_scene.instantiate()
+    bomb.position = (_actor.position - _half_tile_size_vector).snappedf(_TILE_SIZE) + _half_tile_size_vector
+
+    var parent = _actor.get_parent()
+    #var walls = parent.get_node("WallsLayer")
+    #bomb.exploded.connect(walls.on_bomb_exploded)
+    parent.add_child(bomb)
