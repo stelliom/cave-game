@@ -14,6 +14,10 @@ config/name="cave-game"
 run/main_scene="uid://bsw0plqajxqvx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[autoload]
+
+GlobalSignals="*res://global/global_signals.gd"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

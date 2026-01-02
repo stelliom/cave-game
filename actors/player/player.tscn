@@ -205,3 +205,4 @@ metadata/_custom_type_script = "uid://sygbjh6mgu0f"
 [node name="BombSpawnerComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
 script = ExtResource("4_lsqbn")
 _actor = NodePath("..")
+metadata/_custom_type_script = "uid://bwqf3uxkm6ycu"
