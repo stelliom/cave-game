@@ -176,6 +176,7 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D"]
+z_index = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 
