@@ -21,4 +21,3 @@ func get_neighbors(cell):
     cells.append(get_neighbor_cell(cell, TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER))
 
     return cells
-    

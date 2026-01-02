@@ -7,6 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Bomb" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ivd5y")
 
 [node name="Area2D" type="Area2D" parent="."]
